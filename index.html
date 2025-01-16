@@ -15,6 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prata&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <script src="./scripts.js" defer></script>
 </head>
 
 <body>
@@ -27,10 +28,11 @@
         <section class="app__section-banner-container">
             <h1 class="app__title">
                 Optimize your productivity,<br>
-                <strong class="app__title-strong">focus on what matters.</strong>
+                <strong class="app__title-strong">focus on <br>
+                what matters.</strong>
             </h1>
             <figure class="app__image-figure">
-                <img class="app__image" src="/images/foco.png" alt="">
+                <img class="app__image" src="/images/focus.png" alt="">
             </figure>
         </section>
         <section class="app__section-card-container">
@@ -40,10 +42,10 @@
                         <button data-context="focus" class="app__card-button app__card-button--focus active">Focus</button>
                     </li>
                     <li class="app__card-list-item">
-                        <button data-context="short" class="app__card-button app__card-button--short">Short break</button>
+                        <button data-context="short-break" class="app__card-button app__card-button--short-break">Short break</button>
                     </li>
                     <li class="app__card-list-item">
-                        <button data-context="long" class="app__card-button app__card-button--long">Long break</button>
+                        <button data-context="long-break" class="app__card-button app__card-button--long-break">Long break</button>
                     </li>
                 </ul>
                 <div id="timer" class="app__card-timer"></div>
