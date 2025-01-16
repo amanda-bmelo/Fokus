@@ -1,21 +1,21 @@
 :root {
     --color-primary: #123456;
     --color-secondary: #FFF;
-    --azul-royal: #144480;
-    --fundo-card-timer: rgba(20, 68, 128, 0.30);
-    --lils: #B872FF;
-    --linear-botes: linear-gradient(180deg, #B872FF 0%, #144480 100%);
+    --royal-blue: #144480;
+    --background-card-timer: rgba(20, 68, 128, 0.30);
+    --lilac: #B872FF;
+    --linear-buttons: linear-gradient(180deg, #B872FF 0%, #144480 100%);
 }
 
-[data-contexto="foco"] {
+[data-context="focus"] {
     --main-bg-color: linear-gradient(180deg, #8B1FF8 0%, #041832 48.44%, #01080E 100%);
 }
 
-[data-contexto="descanso-curto"] {
+[data-context="short-break"] {
     --main-bg-color: linear-gradient(180deg, #0F725C 0%, #041832 48.44%, #01080E 100%);
 }
 
-[data-contexto="descanso-longo"] {
+[data-context="long-break"] {
     --main-bg-color: linear-gradient(180deg, #1875E9 0%, #041832 48.44%, #01080E 100%);
 }
 
@@ -32,7 +32,7 @@ html {
 
 body {
     min-height: 100vh;
-    background: url("/imagens/pattern.png");
+    background: url("/images/pattern.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -77,8 +77,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .app__card {
     border-radius: 3.2rem;
-    border: 0.2rem solid var(--azul-royal);
-    background: var(--fundo-card-timer);
+    border: 0.2rem solid var(--royal-blue);
+    background: var(--background-card-timer);
     padding: 2.4rem;
     margin: 8rem 0;
     width: 59rem;
@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .app__card-button.active {
     border-radius: 0.8rem;
-    background: var(--azul-royal);
+    background: var(--royal-blue);
     font-weight: 600;
 }
 
@@ -149,7 +149,7 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     outline: inherit;
     border-radius: 3.2rem;
-    background: var(--linear-botes);
+    background: var(--linear-buttons);
     margin-top: 3.2rem;
     font-size: 1.8rem;
     display: flex;
@@ -215,7 +215,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .toggle-checkbox:checked + .toggle-switch {
-    background: var(--lils);
+    background: var(--lilac);
 }
 
 .toggle-checkbox:checked + .toggle-switch:before {
@@ -236,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Para Celulares */
+/* Para Cellphones */
 @media (max-width: 767px) {
     .app__section-banner-container {
         width: 32rem;
