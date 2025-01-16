@@ -8,6 +8,7 @@ const musicPause = new Audio('/sounds/pause.mp3');
 const musicEnd = new Audio('/sounds/beep.mp3');
 
 let timeInSeconds = 1500;
+let fullTime = 1500;
 let intervalId = null;
 
 musicEnd.loop = true;
@@ -48,9 +49,7 @@ function end() {
     musicEnd.play();
     alert("Time's up!");
     musicEnd.pause();
-    stopRegressive();
-    spanStartPause.textContent = 'Start';
-    imgStartPause.src = '/images/play_arrow.png';
+    reset(fullTime);
 }
 
 function stopRegressive() {
@@ -61,6 +60,7 @@ function stopRegressive() {
 function reset(time) {
     stopRegressive();
     timeInSeconds = time;
+    fullTime = time;
     showTime();
     spanStartPause.textContent = 'Start';
     imgStartPause.src = '/images/play_arrow.png';
