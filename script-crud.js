@@ -6,13 +6,31 @@ const ulTaskList = document.querySelector(".app__section-task-list");
 const activeTaskDescription = document.querySelector(
   ".app__section-active-task-description"
 );
+const btnRemoveFinished = document.querySelector("#btn-remove-finished");
+const btnRemoveAll = document.querySelector("#btn-remove-all");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let selectedTask = null;
+let selectedLi = null;
 
 btnAddTask.addEventListener("click", () => {
   formAddTask.classList.toggle("hidden");
 });
+
+btnRemoveFinished.onclick = () => {
+  const selector = ".app__section-task-list-item-complete";
+  document.querySelectorAll(selector).forEach((element) => {
+    element.remove();
+  });
+  tasks = tasks.filter((task) => !task.done);
+  updateTasks();
+};
+
+btnRemoveAll.onclick = () => {
+  ulTaskList.innerHTML = "";
+  tasks = [];
+  updateTasks();
+};
 
 formAddTask.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -27,6 +45,7 @@ formAddTask.addEventListener("submit", (e) => {
 function updateTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
 function addTask(descriptionTask) {
   const task = {
     description: descriptionTask,
@@ -38,6 +57,18 @@ function addTask(descriptionTask) {
 
   tasks.push(task);
   updateTasks();
+}
+
+function finishTask(task, liElement) {
+  liElement.classList.remove("app__section-task-list-item-active");
+  liElement.classList.add("app__section-task-list-item-complete");
+  liElement.querySelector("button")?.setAttribute("disabled", "disabled");
+
+  activeTaskDescription.textContent = "";
+  task.done = true;
+  updateTasks();
+  selectedTask = null;
+  selectedLi = null;
 }
 
 function createTaskElement(task) {
@@ -89,31 +120,39 @@ function createTaskElement(task) {
     }
   };
 
-  liElement.onclick = () => {
-    document
-      .querySelectorAll(".app__section-task-list-item-active")
-      .forEach((e) => {
-        e.classList.remove("app__section-task-list-item-active");
-      });
-
-    if (selectedTask === task) {
-      activeTaskDescription.textContent = '';
-      selectedTask = null;
-      return;
-    }
-
-    selectedTask = task;
-    activeTaskDescription.textContent = task.description;
-    liElement.classList.add("app__section-task-list-item-active");
-  };
-
   liElement.appendChild(svgElement);
   liElement.appendChild(pElement);
   liElement.appendChild(btnEditElement);
+
+  if (task.done) {
+    finishTask(task, liElement);
+  } else {
+    liElement.onclick = () => {
+      if (task.done) return;
+      selectedLi?.classList.remove("app__section-task-list-item-active");
+
+      if (selectedTask === task) {
+        activeTaskDescription.textContent = "";
+        selectedTask = null;
+        selectedLi = null;
+        return;
+      }
+
+      selectedTask = task;
+      selectedLi = liElement;
+      activeTaskDescription.textContent = task.description;
+      liElement.classList.add("app__section-task-list-item-active");
+    };
+  }
+
   return liElement;
 }
 
 tasks.forEach((task) => {
   const taskElement = createTaskElement(task);
   ulTaskList.append(taskElement);
+});
+
+document.addEventListener("FinishedFocus", () => {
+  if (selectedTask) finishTask(selectedTask, selectedLi);
 });

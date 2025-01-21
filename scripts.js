@@ -52,6 +52,13 @@ function end() {
   musicEnd.play();
   alert("Time's up!");
   musicEnd.pause();
+
+  const activeFocus = html.getAttribute('data-context') == 'focus';
+  if (activeFocus) {
+    const event = new CustomEvent('FinishedFocus');
+    document.dispatchEvent(event);
+  }
+
   reset(fullTime);
 }
 
@@ -112,7 +119,7 @@ function alternateTitleContext(context) {
                 <strong class="app__title-strong">focus on <br>
                 what matters.</strong>
             `;
-      reset(1500);
+      reset(1);
       break;
     case "short-break":
       title.innerHTML = `
