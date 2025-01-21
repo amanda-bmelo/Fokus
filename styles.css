@@ -4,7 +4,7 @@
     --royal-blue: #144480;
     --background-card-timer: rgba(20, 68, 128, 0.30);
     --lilac: #B872FF;
-    --background-card: rgba(255, 255, 255, 0.50);
+    --background-card: rgba(255, 255, 255, 0.85);
     --background-card-done: rgba(0, 244, 191, 0.40);
     --linear-buttons: linear-gradient(180deg, #B872FF 0%, #144480 100%);
 }
@@ -119,7 +119,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .app__card-timer {
     color: var(--color-secondary);
-    text-align: center;
     font-family: Unbounded;
     font-size: 12rem;
     font-style: normal;
@@ -253,7 +252,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: right;
     border-radius: 0.8rem;
     border: 0.2rem solid var(--royal-blue, #144480);
-    background: var(--background-card, #1B293B);
+    background: var(--color-primary, #1B293B);
 }
 
 .app__section-task-header__li {
@@ -323,7 +322,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6rem;
+    gap: 8rem;
     padding: 4rem 0;
     border-bottom: 1px solid #144480;
     margin-bottom: 4rem;
@@ -340,6 +339,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app__section-active-task-description {
+    text-align: center;
     font-family: Montserrat;
     font-size: 1.8rem;
     font-style: normal;
@@ -445,7 +445,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     border-radius: 0.8rem;
     padding: 0.8rem;
-    background: #98A0A8;
+    background: #bec3c8;
 }
 
 .app__form-footer {
